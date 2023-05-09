@@ -13,6 +13,7 @@ function getHoliday() {
       'x-rapidapi-key': '84b4e004d4msh6eabc7a0120cf44p1d9ce3jsn5502a62f81e9',
       'x-rapidapi-host': 'public-holiday.p.rapidapi.com',
     },
+    
   };
   // 发起API请求
   fetch(url, settings)
@@ -31,6 +32,33 @@ function getHoliday() {
       });
     })
     .catch(error => console.error(error));
+    fetch(url, settings)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => populateHolidays(data))
+    .catch(error => console.error(error));
+}
+function populateHolidays(holidays) {
+  var html = '';
+  for (var i = 0; i < holidays.length; i++) {
+      html += `<option value="${holidays[i].date}">${holidays[i].date} - ${holidays[i].name}</option>`;
+  }
+  document.getElementById('selectedHoliday').innerHTML = html;
+}
+
+function getHotelsAndWeather() {
+  var selectedHoliday = document.getElementById('selectedHoliday').value;
+  var city = document.getElementById('city').value;
+
+  // Fetch weather
+  getWeather(city);
+
+  // Fetch hotels
+  getHotels(city);
 }
 // 获取酒店的函数
 function getHotels() {

@@ -91,23 +91,22 @@
         <option value="ES">Spain</option>
         <option value="GB">United Kingdom</option>
     </select>
-    <!-- 年份输入框 -->
     <label for="year">Year:</label>
     <input type="number" id="year" value="2022" />
-    <!-- 获取节假日的按钮 -->
+
     <button id="getHoliday">Get Holiday</button>
-    <!-- 节假日列表 -->
     <div id="holidayList" class="result"></div>
-    <!-- 城市输入框 -->
+
     <label for="city">City:</label>
     <input type="text" id="city" />
-    <!-- 获取酒店的按钮 -->
-    <button onclick="getHotels()">Get Hotels</button>
-    <!-- 酒店列表容器 -->
+
+    <label for="selectedHoliday">Selected Holiday:</label>
+    <select id="selectedHoliday">
+        <!-- options will be populated by JavaScript -->
+    </select>
+
+    <button onclick="getHotelsAndWeather()">Get Hotels and Weather</button>
     <div id="hotelList" class="result"></div>
-    <!-- 获取天气的按钮 -->
-    <button onclick="getWeather()">Get Weather</button>
-    <!-- 天气列表容器 -->
     <div id="weatherList" class="result"></div>
 
     <script src="main.js"></script>
